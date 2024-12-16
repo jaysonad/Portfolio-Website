@@ -1,18 +1,87 @@
 /* General Styling */
+/* General Styling */
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
     color: #333;
-    background-color: #f9f9f9;
+    background: linear-gradient(to bottom, #e0f7fa, #007BFF);
+    transition: background 0.5s ease-in-out;
 }
+
+/* Welcome Section Styling */
+#welcome-section {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #007BFF, #00C6FF, #6DD5FA);
+    color: #fff;
+    animation: fadeInBackground 2s ease-in-out;
+    border-radius: 0 0 30px 30px;
+}
+
+#welcome-section h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #FF6F61, #FF9C6F, #FFD36F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    animation: text-glow 2s infinite alternate;
+}
+
+#welcome-section p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    animation: slideInUp 1s ease-out;
+}
+
+/* Animations */
+@keyframes fadeInBackground {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes text-glow {
+    from {
+        text-shadow: 0 0 10px #FF9C6F, 0 0 20px #FFD36F;
+    }
+    to {
+        text-shadow: 0 0 20px #FF6F61, 0 0 40px #FFD36F;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* Header Styling */
 header {
-    background-color: #007BFF;
+    position: sticky;
+    top: 0;
+    background: rgba(0, 123, 255, 0.9);
+    backdrop-filter: blur(10px);
     padding: 15px 0;
     color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header nav ul {
@@ -30,10 +99,11 @@ header nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s;
 }
 
 header nav ul li a:hover {
-    text-decoration: underline;
+    color: #ffcc00;
 }
 
 /* Section Styling */
@@ -41,6 +111,40 @@ section {
     padding: 50px 20px;
     margin: 0 auto;
     max-width: 800px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Headings */
+h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #007BFF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    margin: 20px 0 10px;
+}
+
+h3::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: #0056b3;
+    margin: 8px auto 0;
+    border-radius: 2px;
 }
 
 /* About Section Styling */
@@ -48,6 +152,7 @@ section {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
 }
 
 #about h2 {
@@ -84,6 +189,18 @@ section {
     color: #444;
     position: relative;
     padding-left: 25px;
+    animation: fadeInLeft 1s ease-in-out;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 #about ul li:before {
@@ -99,12 +216,6 @@ section {
     color: #007BFF;
 }
 
-#about p:last-child {
-    text-align: center;
-    font-style: italic;
-    color: #666;
-}
-
 /* Projects Section */
 #projects {
     text-align: center;
@@ -112,6 +223,20 @@ section {
 
 #projects .project {
     margin-bottom: 30px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 1s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #projects .project img {
@@ -119,12 +244,12 @@ section {
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#projects h3 {
-    font-size: 1.5rem;
-    color: #444;
-    margin-top: 15px;
+#projects .project img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 #projects p {
@@ -156,24 +281,26 @@ section {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
+    background: linear-gradient(to right, #007BFF, #0056b3);
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
+    transition: background 0.3s ease-in-out;
 }
 
 #contact form button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to right, #0056b3, #007BFF);
 }
 
 /* Footer Styling */
 footer {
-    background-color: #007BFF;
+    background: rgba(0, 123, 255, 0.9);
     color: white;
     text-align: center;
     padding: 10px 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
 footer ul {
@@ -221,23 +348,5 @@ footer ul li a:hover {
 
     #contact form button {
         font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    header nav ul {
-        font-size: 0.9rem;
-    }
-
-    #about h2 {
-        font-size: 1.5rem;
-    }
-
-    #projects h3 {
-        font-size: 1.2rem;
-    }
-
-    #contact form button {
-        padding: 8px;
     }
 }

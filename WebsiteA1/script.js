@@ -12,7 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-
+    document.addEventListener("DOMContentLoaded", () => {
+        const message = document.getElementById("welcome-message");
+        let colors = ["#FF6F61", "#61AFF6", "#6FFF6A", "#FF61E6"];
+        let i = 0;
+    
+        setInterval(() => {
+            message.style.color = colors[i];
+            i = (i + 1) % colors.length;
+        }, 3000);
+    });
+    
     // Fade-in effect for sections
     const sections = document.querySelectorAll('section');
     const options = {
